@@ -161,11 +161,13 @@ Ce projet est sous licence **MIT**. Voir le fichier `LICENSE` pour plus de déta
 
 ## 📊 Données Rapides
 
-| OS | Version | Recommandé pour |
-|----|---------|-----------------|
-| **Debian** | 12 (Bookworm) | Production, stabilité |
-| **Ubuntu** | 22.04 LTS | Développement, familiarité |
-| **CentOS** | 9 Stream | Entreprise |
-| **Alpine** | 3.19 | Petites ressources |
+| OS | Version | Recommandé pour | Statut |
+|----|---------|-----------------|--------|
+| **Debian** | 12 (Bookworm) | Production, stabilité | 🟢 |
+| **Ubuntu** | 22.04 LTS | Développement, familiarité | 🟢 |
+| **CentOS** | 9 Stream | Entreprise | 🔴 |
+| **Alpine** | 3.19 | Petites ressources | 🔴 |
+
+**Légende** : 🟢 = Recommandé / Testé 🔴 = Configurations spécifiques / Niche
 
 ---
