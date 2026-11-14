@@ -24,7 +24,7 @@
 
 Salut, je m'appelle mth92340. J'ai créé ce panneau de contrôle serveur pour gérer mes propres projets d'hébergement. C'est un projet personnel, fait pour fonctionner sur ma machine et que je souhaite partager.
 
-L'idée : avoir un panneau qui ressemble à ceux qu'on voit sur le marché (style Pterodactyl) mais en simple à configurer et à héberger sur n'importe quelle machine Linux.
+L'idée : avoir un panneau qui ressemble à ceux qu'on voit sur le marché (style ) mais en simple à configurer et à héberger sur n'importe quelle machine Linux.
 
 ---
 
