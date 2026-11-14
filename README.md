@@ -22,7 +22,7 @@
 
 ## 🦖 À propos
 
-**ZinZ1-Web** est un panneau de contrôle serveur automatisé avec une interface inspirée de **Pterodactyl**. Il permet de gérer facilement vos projets d'hébergement sur votre propre machine.
+**ZinZ1-Web** est un panneau de contrôle serveur automatisé avec une interface inspirée de **ZinZ1**. Il permet de gérer facilement vos projets d'hébergement sur votre propre machine.
 
 Ce projet a été créé par **mth92340** pour un usage personnel, mais il est partageable. Il tourne sous **npm** (Node.js requis) et offre une alternative légère aux panneaux commerciaux.
 
@@ -62,7 +62,7 @@ Si la version de Node est inférieure à 18, merci de la mettre à jour avant de
 Pour le **Panel** :
 
 - **Next.js 16** + **React 19** - Interface utilisateur
-- **Tailwind CSS v4** - Theme orange/gris Pterodactyl
+- **Tailwind CSS v4** - Theme orange/gris ZinZ1
 - **TypeScript** - Types complets et sécurité
 - **Lucide-react** - Icônes
 
@@ -133,13 +133,13 @@ Wings doit être installé uniquement si vous voulez gérer des serveurs de jeux
 ```bash
 # Installation pas à pas :
 # 1. Installer Docker : curl -sSL https://get.docker.com/ | CHANNEL=stable bash
-# 2. Télécharger Wings : curl -L -o /usr/local/bin/wings "https://github.com/pterodactyl/wings/releases/latest/download/wings_linux_$([[ "$(uname -m)" == "x86_64" ]] && echo "amd64" || echo "arm64")"
+# 2. Télécharger Wings : curl -L -o /usr/local/bin/wings "https://github.com/ZinZ1/wings/releases/latest/download/wings_linux_$([[ "$(uname -m)" == "x86_64" ]] && echo "amd64" || echo "arm64")"
 # 3. Chmod : sudo chmod u+x /usr/local/bin/wings
 # 4. Configurer le panel : suivre l'interface d'administration
-# 5. Créer un node dans le panel et copier la config dans /etc/pterodactyl/config.yml
+# 5. Créer un node dans le panel et copier la config dans /etc/ZinZ1/config.yml
 ```
 
-*Note : Cette section s'applique si vous voulez utiliser le panel pour gérer des serveurs de jeux, comme Pterodactyl.*
+*Note : Cette section s'applique si vous voulez utiliser le panel pour gérer des serveurs de jeux, comme ZinZ1.*
 
 ---
 
