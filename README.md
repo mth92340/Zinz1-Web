@@ -1,173 +1,100 @@
 # ZinZ1-web-test
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/mth92340/ZinZ1-web-test?style=social)](https://github.com/mth92340/ZinZ1-web-test)
-[![GitHub forks](https://img.shields.io/github/forks/mth92340/ZinZ1-web-test?style=social)](https://github.com/mth92340/ZinZ1-web-test)
+![Logo](public/icon.svg)
 
-## 📊 Panneau de Contrôle Serveur - Pterodactyl Style
+## À propos
 
-Un panneau de gestion serveur complet et automatisé avec interface style **Pterodactyl**. Déployé en un clic avec `npm`.
+Salut, je m'appelle mth92340. J'ai créé ce panneau de contrôle serveur pour gérer mes propres projets d'hébergement. C'est un projet personnel, fait pour fonctionner sur ma machine et que je souhaite partager.
 
----
-
-## 🚀 Fonnalités
-
-### Installation Automatisée
-- **Serveur** : Choix Nginx ou Apache
-- **OS supportés** :
-  - **Debian 12 (Bookworm)** - Installation recommandée, stabilité maximale
-  - **Ubuntu 22.04 LTS** - Interface familière, grand support communautaire
-  - **CentOS 9 Stream** - Pour environnements d'entreprise
-  - **Alpine Linux 3.19** - Allégé, performant pour petites ressources
-- **Ressources** : RAM, CPU, Disk configurables
-- **Mode d'installation** :
-  - **Domaine personnalisé** : `votre-site.fr` (configure Nginx/Apache avec votre domaine)
-  - **IP + Port aléatoire** : Chaque projet obtient un port unique (ex: 8086, 8087, 8088...) via `bash` one-liner
-
-### Panel Features
-- ✅ Barre de progression d'installation avec étapes détaillées
-- ✅ Firewall UFW configuré automatiquement (ports 22, 80, 443)
-- ✅ phpMyAdmin inclus (accès à `votre-ip:port/phpmyadmin`)
-- ✅ Utilisateurs SSH automatiques avec identifiants uniques
-- ✅ Ports uniques par projet (pas de conflits entre projets)
-- ✅ Interface sombre orange/gris typique de Pterodactyl
-- ⚡ **Installation en un clic** avec raccourci bash
-
-### Gestion Projets
-- Création illimitée de projets
-- Cada projet a son propre nom de domaine OU port unique
-- Accès SFTP/FTP isolé par projet
-- Statistiques en temps réel (CPU, Mémoire, Disk)
-- Console interactive avec commandes exécutables
+L'idée : avoir un panneau qui ressemble à ceux qu'on voit sur le marché (style Pterodactyl) mais en simple à configurer et à héberger sur n'importe quelle machine Linux.
 
 ---
 
-## ⚡ Installation Rapide (Bash One-Liner)
+## Qu'est-ce qu'il fait ?
 
-### Installation avec domaine personnalisé :
+Bon, c'est un panneau qui permet de :
+- Lancer automatiquement un serveur (Nginx ou Apache) sur votre machine
+- Choisir le système d'exploitation (Debian, Ubuntu, CentOS ou Alpine)
+- Obtenir un accès SSH avec un utilisateur et mot de passe créés automatiquement
+- Avoir phpMyAdmin installé tout de suite
+- Avoir un firewall (UFW) qui configure les ports nécessaires
+- Créer des projets isolés avec leurs propres ports d'accès
+
+Chaque projet obtient son propre port (ex: 8086, 8087, 8088...) pour ne pas se marcher dessus. C'est pratique quand on en a plusieurs qui tournent en même temps.
+
+---
+
+## Installation
+
+Le projet tourne sous **npm** (il faut avoir Node.js installé sur votre machine).
+
 ```bash
-curl -fsSL https://raw.githubusercontent.com/mth92340/ZinZ1-web-test/main/install.sh | bash -s -- -d votre-domaine.fr
+# Cloner ou télécharger
+git clone https://github.com/mth92340/ZinZ1-web-test.git
+
+# Installer les dépendances
+npm install
+
+# Lancer
+npm run dev
 ```
 
-### Installation avec IP + port aléatoire :
+Le panel sera accessible sur http://localhost:3000 (ou sur votre IP locale sur le réseau local).
+
+---
+
+## Installation automatique (un clic)
+
+J'ai aussi inclus un script d'installation automatique. Voici les options :
+
+**Avec votre domaine personnel :**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/mth92340/ZinZ1-web-test/main/install.sh | bash -s -- -i
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/mth92340/ZinZ1-web-test/main/install.sh)" -d votre-domaine.fr
 ```
 
-### Options disponibles :
-- `-d domaine.fr` : Installer avec domaine personnalisé
-- `-i` : Installer avec IP + port aléatoire unique
-- `-s type` : Type de serveur (nginx ou apache)
-- `-o os` : Système d'exploitation (debian, ubuntu, centos, alpine)
-
----
-
-## 🐦 Systèmes d'Explication d'Installation
-
-### � Debian 12 (Bookworm) Installation :
-**Recommandé pour la stabilité et la sécurité :**
-1. Le système installe Debian 12 minimal
-2. Configure Nginx/Apache avec vos paramètres
-3. Crée utilisateur SSH unique avec mot de passe fort
-4. Installe phpMyAdmin automatiquement
-5. Configure UFW firewall (ports 22 SSH, 80/443 HTTP/HTTPS)
-6. Retourne vos identifiants d'accès
-
-**Idéal pour :** Production, serveurs principaux, sites critiques
-
-### � Ubuntu 22.04 LTS Installation :
-**Idéal si vous connaissez déjà Ubuntu :**
-1. Installe Ubuntu 22.04 LTS minimal
-2. Configuration identiques à Debian ci-dessus
-3. Avantage : Familiarité si vous utilisez Ubuntu ailleurs
-4. Support communautaire étendu
-
-**Idéal pour :** Développement, transition depuis Ubuntu desktop, communauté large
-
----
-
-## 📋 Exemple Complet d'Utilisation
-
-### Scénario 1 : Avec domaine personnel
+**Sans domaine (avec IP + port aléatoire) :**
 ```bash
-# Installe avec votre domaine
-curl -fsSL https://raw.githubusercontent.com/mth92340/ZinZ1-web-test/main/install.sh | bash -s -- -d mon-site.fr
-
-# Résultat :
-# - Serveur Nginx configuré pour mon-site.fr
-# - Utilisateur SSH créé
-# - phpMyAdmin accessible
-# - Firewall UFW configuré
-# - Panel accessible sur http://mon-site.fr
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/mth92340/ZinZ1-web-test/main/install.sh)" -i
 ```
 
-### Scénario 2 : Sans domaine (IP + port)
+**Avec options avancées :**
 ```bash
-# Installe avec IP + port aléatoire
-curl -fsSL https://raw.githubusercontent.com/mth92340/ZinZ1-web-test/main/install.sh | bash -s -- -i
-
-# Résultat :
-# - Port unique assigné (ex: 8087)
-# - Serveur Nginx/Apache sur ce port
-# - Utilisateur SSH créé
-# - phpMyAdmin sur le port
-# - Panel accessible sur http://IP_du_serveur:8087
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/mth92340/ZinZ1-web-test/main/install.sh)" -s nginx -o debian -d api.mon-entreprise.fr
 ```
 
-### Scénario 3 : Avec options avancées
-```bash
-# Installation complète avec tous les options
-curl -fsSL https://raw.githubusercontent.com/mth92340/ZinZ1-web-test/main/install.sh | bash -s -- -s nginx -o debian -d api.mon-entreprise.fr
-
-# Résultat :
-# - Serveur Nginx sur Debian 12
-# - Domaine api.mon-entreprise.fr
-# - Tout le panel complet
-```
+Les ports uniques sont générés automatiquement pour éviter les conflits entre projets. J'ai galéré un peu pour ça au début, donc j'ai laissé dedans.
 
 ---
 
-## 🛠️ Technologies Utilisées
+## Systèmes d'exploitation
 
-- **Next.js 16** + **React 19** - Interface utilisateur
-- **Tailwind CSS v4** - Theme orange/gris Pterodactyl
-- **TypeScript** - Types complets et sécurité
-- **Bash Scripts** - Installation automatisée
+J'ai testé ces quatre OS sur ma machine. Voici mon avis franc :
 
----
+- **Debian 12 (Bookworm)** : Mon préféré pour la stabilité. Fonctionne bien en production.
+- **Ubuntu 22.04 LTS** : Si vous connaissez déjà Ubuntu ailleurs. Facile à prendre en main.
+- **CentOS 9 Stream** : Pour les environnements d'entreprise. Un peu plus complexe à configurer.
+- **Alpine Linux 3.19** : Pour les petites ressources, les VPS avec peu de mémoire.
 
-## 📬 Support et Contact
-
-**📧 Email :** contact@zinz1-dev.fr
-
-- **Problèmes techniques** : Ouvrez une issue sur GitHub
-- **Questions d'installation** : Utilisez les commandes bash ci-dessus
-- **Demandes de fonctionnalités** : Contactez par email
-- **Dépannage** : Voir la documentation ci-dessus
+Chaque OS fonctionne avec Nginx ou Apache au choix. J'ai mis les deux car certains préfèrent l'un, d'autres l'autre.
 
 ---
 
-## 📄 Licence
+## Contact
 
-Ce projet est sous licence **MIT**. Voir le fichier `LICENSE` pour plus de détails.
+Si vous avez des questions, des bugs, ou juste envie de dire bonjour :
 
----
+**Email :** contact@zinz1-dev.fr
 
-## 👨‍💻 Auteur
-
-**mth92340** - Panel de contrôle serveur complet et automatisé
+Ou ouvrez une issue sur GitHub. J'y réponds quand je peux.
 
 ---
 
-## 📊 Données Rapides
+## Licence
 
-| OS | Version | Recommandé pour | Statut |
-|----|---------|-----------------|--------|
-| **Debian** | 12 (Bookworm) | Production, stabilité | 🟢 |
-| **Ubuntu** | 22.04 LTS | Développement, familiarité | 🟢 |
-| **CentOS** | 9 Stream | Entreprise | 🔴 |
-| **Alpine** | 3.19 | Petites ressources | 🔴 |
+Ce projet est sous licence MIT. Libre à vous de l'utiliser, de le modifier ou de le redistribuer. C'est la licence que j'ai choisie pour garder les choses simples.
 
-**Légende** : 🟢 = Recommandé / Testé 🔴 = Configurations spécifiques / Niche
+***
 
----
+Réalisé par mth92340, 2026
+
+Pas de blabla marketing, pas de "révolutionner le monde". C'est juste un outil que j'ai fait pour moi et que je partage au cas où ça puisse servir à d'autres.
