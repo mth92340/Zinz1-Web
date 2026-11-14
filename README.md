@@ -7,180 +7,218 @@
 <h1 align="center">ZinZ1-Web</h1>
 
 <p align="center">
-  <strong>Panneau de contrôle serveur automatisé</strong>
-</p>
-
-<p align="center">
-  <a href="# Installation">Installation</a> ·
-  <a href="# Installation manuelle">Installation manuelle</a> ·
-  <a href="# Systèmes d'exploitation">Systèmes d'exploitation</a> ·
-  <a href="# Conditions d'utilisation">Conditions d'utilisation</a> ·
-  <a href="# Contact">Contact</a>
+  <strong>Automated Server Control Panel</strong>
 </p>
 
 <br />
 
-## 🦖 À propos
+## 🌐 Language / Langue
 
-**ZinZ1-Web** est un panneau de contrôle serveur automatisé avec une interface inspirée de **ZinZ1**. Il permet de gérer facilement vos projets d'hébergement sur votre propre machine.
+<select id="language-select" onchange="changeLanguage(this.value)" style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 6px;">
+  <option value="fr" selected>Français</option>
+  <option value="en">English</option>
+</select>
 
-Ce projet a été créé par **mth92340** pour un usage personnel, mais il est partageable. Il tourne sous **npm** (Node.js requis) et offre une alternative légère aux panneaux commerciaux.
+<script>
+function changeLanguage(lang) {
+  // Simple language switch - stores preference in localStorage
+  localStorage.setItem('userLanguage', lang);
+  location.reload();
+}
+
+// Check for saved language preference
+document.addEventListener('DOMContentLoaded', () => {
+  const savedLang = localStorage.getItem('userLanguage');
+  if (savedLang) {
+    document.getElementById('language-select').value = savedLang;
+  }
+});
+</script>
+
+<br />
+
+## 📊 About
+
+**ZinZ1-Web** is an automated server control panel with a **Pterodactyl-style** interface. It allows you to easily manage your hosting projects on your own machine.
+
+This project was created by **mth92340** for personal use, but it is shareable. It runs under **npm** (Node.js required) and offers a lightweight alternative to commercial panels.
 
 ---
 
-## 📚 Documentation officielle
+## 📚 Official Documentation
 
-- [Site web](https://zinz1-dev.fr)
-- [Dépôt GitHub](https://github.com/mth92340/Zinz1-Web)
+- [Website](https://zinz1-dev.fr)
+- [GitHub Repository](https://github.com/mth92340/Zinz1-web-test)
 
 ---
 
-## ✅ Avant de commencer
+## ✅ Before You Begin
 
-Vous devez avoir :
+You will need:
 
-- 🐧 un serveur Linux avec accès `root` ou `sudo` ;
-- 🧠 des bases solides en administration Linux ;
-- 📦 Node.js et npm installés ;
-- 💾 un espace disque libre d'au moins 500 Mo.
+- 🐧 A Linux server with `root` or `sudo` access;
+- 🌐 A domain name pointing to your server, especially if you enable HTTPS;
+- 🧠 Solid Linux administration basics;
+- 📦 Docker-compatible hosting, ideally KVM or a dedicated server;
+- 💾 A backup of your important data before any installation.
 
-ZinZ1-Web ne fonctionne pas sous Windows pour le panel. Les environnements avec très peu de mémoire posent parfois problème.
+ZinZ1-Web does not work under Windows for Wings. OpenVZ, OVZ, Virtuozzo, or some LXC environments often have problems with Docker.
 
-Pour vérifier votre configuration :
+To check virtualization:
 
 ```bash
-node --version
-npm --version
+systemd-detect-virt
 ```
 
-Si la version de Node est inférieure à 18, merci de la mettre à jour avant de continuer.
+If the result indicates `openvz` or `lxc`, ask your hoster for confirmation before continuing.
 
 ---
 
-## 📦 Dépendances principales
+## 🧩 Supported Systems
 
-Pour le **Panel** :
+According to current official documentation, the Panel and Wings work on the following distributions.
 
-- **Next.js 16** + **React 19** - Interface utilisateur
-- **Tailwind CSS v4** - Theme orange/gris ZinZ1
-- **TypeScript** - Types complets et sécurité
-- **Lucide-react** - Icônes
-
-Pour le **Panel Features** :
-
-- 🐧 Système d'exploitation : Debian, Ubuntu, CentOS, Alpine
-- 🔧 Serveur : Nginx ou Apache au choix
-- 🛡️ Firewall : UFW configuré automatiquement (ports 22, 80, 443)
-- 📊 phpMyAdmin inclus
-- 👤 Utilisateurs SSH automatiques avec identifiants uniques
-- 📊 Ports uniques par projet (pas de conflits entre projets)
-- 📊 Statistiques en temps réel (CPU, Mémoire, Disk)
-
----
-
-## 🖥️ Installation officielle
-
-### 1. 📦 Installation via npm
-
-```bash
-# Cloner le dépôt
-git clone https://github.com/mth92340/Zinz1-Web.git
-
-# Installer les dépendances
-npm install
-
-# Lancer le panel
-npm run dev
-```
-
-Le panel sera accessible sur `http://localhost:3000` (ou sur votre IP locale sur le réseau local).
-
-### 2. 🐧 Installation manuelle
-
-Si vous préférez installer les composants vous-même :
-
-```bash
-# Installer Nginx ou Apache selon votre choix
-# Configurer le firewall UFW (ports 22, 80, 443)
-# Installer phpMyAdmin
-# Créer un utilisateur SSH avec mot de passe
-
-# Les détails dépendent de votre système d'exploitation (Debian, Ubuntu, CentOS, Alpine)
-# et de vos préférences de configuration.
-```
-
----
-
-## 🧩 Systèmes d'exploitation supportés
-
-D'après les tests effectués, les distributions suivantes fonctionnent avec ZinZ1-Web :
-
-| Système | Version | Notes |
+| System | Supported Versions | Notes |
 | --- | --- | --- |
-| **Ubuntu** | 22.04 LTS | Recommandé pour une utilisation quotidienne. |
-| **Debian** | 12 (Bookworm) | Stable et idéale pour la production. |
-| **CentOS** | 9 Stream | Pour les environnements d'entreprise. |
-| **Alpine** | 3.19 | Pour les petites ressources, VPS avec peu de mémoire. |
+| **Ubuntu** | 22.04, 24.04 | Ubuntu 22.04 requires additional PHP repositories. |
+| **Debian** | 11, 12, 13 | Officially documented Debian dependencies. |
+| **RHEL / Rocky Linux / AlmaLinux** | 8, 9 | Additional repositories may be needed. |
 
-Chaque OS fonctionne avec **Nginx** ou **Apache** au choix. J'ai inclus les deux car certains préfèrent l'un, d'autres l'autre.
-
----
-
-## 🪽 Installation officielle de Wings (optionnelle)
-
-Wings doit être installé uniquement si vous voulez gérer des serveurs de jeux via le panel.
-
-```bash
-# Installation pas à pas :
-# 1. Installer Docker : curl -sSL https://get.docker.com/ | CHANNEL=stable bash
-# 2. Télécharger Wings : curl -L -o /usr/local/bin/wings "https://github.com/ZinZ1/wings/releases/latest/download/wings_linux_$([[ "$(uname -m)" == "x86_64" ]] && echo "amd64" || echo "arm64")"
-# 3. Chmod : sudo chmod u+x /usr/local/bin/wings
-# 4. Configurer le panel : suivre l'interface d'administration
-# 5. Créer un node dans le panel et copier la config dans /etc/ZinZ1/config.yml
-```
-
-*Note : Cette section s'applique si vous voulez utiliser le panel pour gérer des serveurs de jeux, comme ZinZ1.*
+Wings also mentions Ubuntu 20.04 as supported, but for a complete new installation it is better to start with a recent and maintained version.
 
 ---
 
-## ⚡ Option rapide : script communautaire
+## 📦 Main Dependencies
+
+For the **Panel**:
+
+- **PHP `8.2` or `8.3`** recommended;
+- PHP extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml`, `dom`, `curl`, `zip`, and `fpm` with NGINX;
+- **MySQL `5.7.22+` or MySQL `8`, or MariaDB `10.2+`**;
+- **Redis**;
+- **A web server**: NGINX, Apache or Caddy;
+- **`curl`, `tar`, `unzip`, `git`**;
+- **Composer v2**.
+
+For **Wings**:
+
+- **Docker**;
+- **`curl`**;
+- A Linux kernel compatible with Docker;
+- An SSL certificate if the Panel uses HTTPS.
+
+---
+
+## 🖥️ Official Panel Installation
+
+The exact commands may vary depending on the distribution. Always consult the official page before running them.
+
+### 1. 📦 Install Dependencies
+
+Example for a Debian/Ubuntu base:
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/mth92340/Zinz1-Web/main/install.sh)
+apt update
+apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg tar unzip git redis-server nginx mariadb-server
 ```
 
-Ce script automatise une partie de l'installation. Avant de l'utiliser, lisez le script, comprenez ce qu'il modifie sur votre serveur et vérifiez qu'il supporte votre distribution.
+Then install PHP `8.2` or `8.3` and the necessary extensions according to your system. The official documentation gives a complete example for Ubuntu with adapted PHP repositories.
+
+Install Composer:
+
+```bash
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+```
+
+### 2. ⬇️ Download the Panel
+
+```bash
+mkdir -p /var/www/pterodactyl
+cd /var/www/pterodactyl
+
+curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz
+tar -xzvf panel.tar.gz
+chmod -R 755 storage/* bootstrap/cache/
+```
+
+### 3. 🗄️ Prepare the Database
+
+Connect to MariaDB or MySQL:
+
+```bash
+mariadb -u root -p
+```
+
+Create the user and database, replacing `solid_password` with a unique password:
+
+```sql
+CREATE USER 'pterodactyl'@'127.0.0.1' IDENTIFIED BY 'solid_password';
+CREATE DATABASE panel;
+GRANT ALL PRIVILEGES ON panel.* TO 'pterodactyl'@'127.0.0.1' WITH GRANT OPTION;
+exit
+```
+
+...
+
+### 4. 🗝️ Generate the Panel Key
+
+```bash
+php artisan key:generate
+```
+
+Without this key, some encrypted data becomes irrecoverable, even with a database backup.
+
+...
+
+### 5. 🚀 Run Migrations
+
+```bash
+php artisan migrate --seed --force
+php artisan p:user:make
+```
+
+...
+
+## ⚡ Quick Option: Community Script
+
+```bash
+bash <(curl -s https://pterodactyl-installer.se)
+```
+
+This script is not the official Pterodactyl method. Before using it, read its repository, understand what it modifies on your server, and verify it supports your distribution: pterodactyl-installer.
+
+For a Panel + Wings installation via this script, the usually used option is the combined Panel and Wings installation. Answer carefully the questions about the database, domain, firewall, HTTPS and Let's Encrypt.
 
 ---
 
 ## 📬 Contact
 
-Si vous avez des questions, des bugs, ou juste envie de dire bonjour :
+If you have questions, bugs, or just want to say hello:
 
 **Email :** contact@zinz1-dev.fr
 
 **GitHub :** [zinz1-dev](https://github.com/zinz1-dev)
 
-Ou ouvrez une issue sur GitHub. J'y réponds quand je peux.
+Or open an issue on GitHub. I answer when I can.
 
 ---
 
-## 👨‍💻 À propos de l'auteur
+## 👨‍💻 About the Author
 
-**mth92340** a créé ce panneau pour gérer ses propres projets d'hébergement. C'est un projet personnel partagé au cas où ça puisse servir à d'autres. Aucun blabla marketing, pas de "révolutionner le monde" - c'est simplement un outil utile.
+**mth92340** created this panel to manage his own hosting projects. It is a personal project shared in case it might be useful to others. No marketing hype, no "revolutionizing the world" - it's just a useful tool.
 
-**Site web :** [zinz1-dev.fr](https://zinz1-dev.fr)
+**Website :** zinz1-dev.fr
 
 ---
 
-## 📄 Licence
+## 📄 License
 
-Ce projet est sous licence **MIT**. Voir le fichier `LICENSE` pour plus de détails.
+This project is under the **MIT** License. See the `LICENSE` file for more details.
 
-Réalisé par **mth92340**, 2026
+Made by **mth92340**, 2026
 
 ---
 
 <p align="center">
-  <strong>Stars ⭐ sur GitHub sont les bienvenus !</strong>
+  <strong>Stars ⭐ on GitHub are welcome!</strong>
 </p>
