@@ -43,26 +43,19 @@ Le panel sera accessible sur http://localhost:3000 (ou sur votre IP locale sur l
 
 ---
 
-## Installation automatique (un clic)
+## Installation manuelle
 
-J'ai aussi inclus un script d'installation automatique. Voici les options :
+Si vous préférez installer vous-même les composants :
 
-**Avec votre domaine personnel :**
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/mth92340/ZinZ1-web-test/main/install.sh)" -d votre-domaine.fr
-```
+# Installer Nginx ou Apache selon votre choix
+# Configurer le firewall UFW (ports 22, 80, 443)
+# Installer phpMyAdmin
+# Créer un utilisateur SSH avec mot de passe
 
-**Sans domaine (avec IP + port aléatoire) :**
-```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/mth92340/ZinZ1-web-test/main/install.sh)" -i
+# Les détails dépendent de votre système d'exploitation (Debian, Ubuntu, CentOS, Alpine)
+# et de vos préférences de configuration.
 ```
-
-**Avec options avancées :**
-```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/mth92340/ZinZ1-web-test/main/install.sh)" -s nginx -o debian -d api.mon-entreprise.fr
-```
-
-Les ports uniques sont générés automatiquement pour éviter les conflits entre projets. J'ai galéré un peu pour ça au début, donc j'ai laissé dedans.
 
 ---
 
