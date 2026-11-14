@@ -30,7 +30,7 @@ Le projet tourne sous **npm** (il faut avoir Node.js installé sur votre machine
 
 ```bash
 # Cloner ou télécharger
-git clone https://github.com/mth92340/ZinZ1-web-test.git
+git clone https://github.com/zinz1-dev/ZinZ1-web-test.git
 
 # Installer les dépendances
 npm install
@@ -43,7 +43,7 @@ Le panel sera accessible sur http://localhost:3000 (ou sur votre IP locale sur l
 
 ---
 
-## Installation manuelle
+## Installation manuelle (optionnel)
 
 Si vous préférez installer vous-même les composants :
 
@@ -56,6 +56,28 @@ Si vous préférez installer vous-même les composants :
 # Les détails dépendent de votre système d'exploitation (Debian, Ubuntu, CentOS, Alpine)
 # et de vos préférences de configuration.
 ```
+
+---
+
+## Conditions d'utilisation
+
+Ce projet est fourni **tel quel**. En l'utilisant, vous acceptez les conditions suivantes :
+
+1. **Utilisation personnelle et non commerciale** : Ce panneau est gratuit pour un usage personnel ou non commercial. Vous pouvez l'installer sur vos propres serveurs pour vos propres projets.
+
+2. **Interdiction de modification des scripts originaux** : Vous ne devez pas modifier, altérer ou soustraire les scripts d'installation d'origine contenus dans ce dépôt. Cela inclut mais sans s'y limiter :
+   - Ne pas supprimer ou modifier les commentaires d'auteur
+   - Ne pas modifier les fonctions d'installation automatique
+   - Ne pas altérer le système de génération de ports uniques
+
+3. **Interdiction de revente** : Vous ne devez pas revendre, sous-licencier ou monétiser ce panneau sous quelque forme que ce soit. Ce projet reste propriété de **zinz1-dev**.
+
+4. **Redistribution** : Vous pouvez redistribuer ce projet à condition de :
+   - Le distribuer sous la même licence MIT
+   - Conserver tous les notices d'auteur et de copyright
+   - Ne pas le présenter comme votre propre travail
+
+5. **Pas de garantie** : Ce panneau est fourni sans aucune garantie d'aucun kind, explicite ou implicite. Son utilisation est à vos propres risques.
 
 ---
 
@@ -78,16 +100,24 @@ Si vous avez des questions, des bugs, ou juste envie de dire bonjour :
 
 **Email :** contact@zinz1-dev.fr
 
+**GitHub :** [zinz1-dev](https://github.com/zinz1-dev)
+
 Ou ouvrez une issue sur GitHub. J'y réponds quand je peux.
 
 ---
 
 ## Licence
 
-Ce projet est sous licence MIT. Libre à vous de l'utiliser, de le modifier ou de le redistribuer. C'est la licence que j'ai choisie pour garder les choses simples.
+Ce projet est sous licence **MIT**. Voir le fichier `LICENSE` pour plus de détails.
 
 ***
 
 Réalisé par mth92340, 2026
 
 Pas de blabla marketing, pas de "révolutionner le monde". C'est juste un outil que j'ai fait pour moi et que je partage au cas où ça puisse servir à d'autres.
+
+---
+
+**Site web :** [zinz1-dev.fr](https://zinz1-dev.fr)
+
+**Pseudo GitHub :** [zinz1-dev](https://github.com/zinz1-dev)
