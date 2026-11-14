@@ -1,4 +1,4 @@
-# ZinZ1-web-test
+# ZinZ1-web
 
 <p align="center">
   <img src="public/icon.svg" alt="ZinZ1-Web Logo" width="80"/>
