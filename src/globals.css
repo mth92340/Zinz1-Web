@@ -1,0 +1,107 @@
+/* Tailwind CSS v4 - Blue/Violet/Black Theme */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom theme variables for blue/violet/black */
+:root {
+  --background: #0a0a0f;
+  --foreground: #e8e8ec;
+  --muted: #6b6b80;
+  --card: #12121a;
+  --border: #2a2a3a;
+  --primary: #6366f1; /* Blue indigo */
+  --primary-foreground: #ffffff;
+  --secondary: #8b5cf6; /* Violet */
+  --secondary-foreground: #f3f4f6;
+  --accent-blue: #3b82f6;
+  --accent-violet: #8b5cf6;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+}
+
+/* Dark mode classes */
+.dark {
+  --background: #0a0a0f;
+  --foreground: #e8e8ec;
+  --muted: #6b6b80;
+  --card: #12121a;
+  --border: #2a2a3a;
+}
+
+/* Sidebar styles */
+.sidebar {
+  background: var(--card);
+  min-height: 100vh;
+}
+
+/* Topbar styles */
+.topbar {
+  background: var(--background);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Stat card styles */
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+/* Panel styles */
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+/* Button styles */
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.btn-primary:hover {
+  background: #4f46e5;
+}
+
+.btn-secondary {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.btn-secondary:hover {
+  background: #7c3aed;
+}
+
+/* Status pill styles */
+.status-online { background: #10b981; color: white; }
+.status-offline { background: #6b7280; color: white; }
+.status-deploying { background: #f59e0b; color: white; }
+
+/* Avatar colors */
+.avatar-blue { background: var(--primary); color: var(--primary-foreground); }
+.avatar-violet { background: var(--secondary); color: var(--secondary-foreground); }
+
+/* Chart styles */
+.chart-line { stroke: var(--primary); }
+
+/* Notification toast */
+.toast {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+/* Table styles */
+.table-striped tbody tr:nth-child(odd) { background: var(--muted-faint, #1e1e26); }
+
+/* Modal styles */
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Focus styles */
+.focus-visible:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
