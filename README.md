@@ -1,6 +1,6 @@
 # ZinZ1-web-test
 
-![Logo](public/icon.svg)
+![Project Image](public/icon.svg)
 
 ## À propos
 
