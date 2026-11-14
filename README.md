@@ -1,13 +1,13 @@
 # ZinZ1-web-test
 
 <p align="center">
-  <img src="public/icon.svg" alt="ZinZ1-Web Logo" width="120"/>
+  <img src="public/icon.svg" alt="ZinZ1-Web Logo" width="80"/>
 </p>
 
 <h1 align="center">ZinZ1-Web</h1>
 
 <p align="center">
-  <strong>Panneau de contrôle serveur automatisé - Style Pterodactyl</strong>
+  <strong>Panneau de contrôle serveur automatisé</strong>
 </p>
 
 <p align="center">
@@ -20,7 +20,7 @@
 
 <br />
 
-## 📊 À propos
+## 🦖 À propos
 
 **ZinZ1-Web** est un panneau de contrôle serveur automatisé avec une interface inspirée de **Pterodactyl**. Il permet de gérer facilement vos projets d'hébergement sur votre propre machine.
 
@@ -28,22 +28,59 @@ Ce projet a été créé par **mth92340** pour un usage personnel, mais il est p
 
 ---
 
-## ✨ Fonnalités
+## 📚 Documentation officielle
 
-- **Installation automatisée** : Lancement automatique de Nginx ou Apache
-- **Systèmes d'exploitation** : Debian 12, Ubuntu 22.04, CentOS 9, Alpine 3.19
-- **Accès SSH** : Utilisateur et mot de passe créés automatiquement
-- **phpMyAdmin** : Installé automatiquement
-- **Firewall UFW** : Configuration automatique des ports (22, 80, 443)
-- **Projets isolés** : Chaque projet obtient son propre port unique (ex: 8086, 8087, 8088...)
-- **Interface** : Style sombre orange/gris typique de Pterodactyl
-- **Console interactive** : Exécution de commandes dans les projets
+- [Site web](https://zinz1-dev.fr)
+- [Dépôt GitHub](https://github.com/mth92340/Zinz1-Web)
 
 ---
 
-## 🎯 Installation
+## ✅ Avant de commencer
 
-### Via npm (recommandé)
+Vous devez avoir :
+
+- 🐧 un serveur Linux avec accès `root` ou `sudo` ;
+- 🧠 des bases solides en administration Linux ;
+- 📦 Node.js et npm installés ;
+- 💾 un espace disque libre d'au moins 500 Mo.
+
+ZinZ1-Web ne fonctionne pas sous Windows pour le panel. Les environnements avec très peu de mémoire posent parfois problème.
+
+Pour vérifier votre configuration :
+
+```bash
+node --version
+npm --version
+```
+
+Si la version de Node est inférieure à 18, merci de la mettre à jour avant de continuer.
+
+---
+
+## 📦 Dépendances principales
+
+Pour le **Panel** :
+
+- **Next.js 16** + **React 19** - Interface utilisateur
+- **Tailwind CSS v4** - Theme orange/gris Pterodactyl
+- **TypeScript** - Types complets et sécurité
+- **Lucide-react** - Icônes
+
+Pour le **Panel Features** :
+
+- 🐧 Système d'exploitation : Debian, Ubuntu, CentOS, Alpine
+- 🔧 Serveur : Nginx ou Apache au choix
+- 🛡️ Firewall : UFW configuré automatiquement (ports 22, 80, 443)
+- 📊 phpMyAdmin inclus
+- 👤 Utilisateurs SSH automatiques avec identifiants uniques
+- 📊 Ports uniques par projet (pas de conflits entre projets)
+- 📊 Statistiques en temps réel (CPU, Mémoire, Disk)
+
+---
+
+## 🖥️ Installation officielle
+
+### 1. 📦 Installation via npm
 
 ```bash
 # Cloner le dépôt
@@ -56,9 +93,9 @@ npm install
 npm run dev
 ```
 
-Le panel sera accessible sur `http://localhost:3000` (ou sur votre IP locale).
+Le panel sera accessible sur `http://localhost:3000` (ou sur votre IP locale sur le réseau local).
 
-### Installation manuelle
+### 2. 🐧 Installation manuelle
 
 Si vous préférez installer les composants vous-même :
 
@@ -74,66 +111,45 @@ Si vous préférez installer les composants vous-même :
 
 ---
 
-## 🐧 Systèmes d'exploitation supportés
+## 🧩 Systèmes d'exploitation supportés
 
-J'ai testé ces quatre OS sur ma machine. Voici mon avis franc :
+D'après les tests effectués, les distributions suivantes fonctionnent avec ZinZ1-Web :
 
-| OS | Version | Mon avis |
-|----|---------|----------|
-| **Debian** | 12 (Bookworm) | **Mon favori** pour la stabilité. Idéal pour la production. |
-| **Ubuntu** | 22.04 LTS | Si vous connaissez déjà Ubuntu ailleurs. Facile à prendre en main. |
-| **CentOS** | 9 Stream | Pour les environnements d'entreprise. Un peu plus complexe à configurer. |
-| **Alpine** | 3.19 | Pour les petites ressources, les VPS avec peu de mémoire. |
+| Système | Version | Notes |
+| --- | --- | --- |
+| **Ubuntu** | 22.04 LTS | Recommandé pour une utilisation quotidienne. |
+| **Debian** | 12 (Bookworm) | Stable et idéale pour la production. |
+| **CentOS** | 9 Stream | Pour les environnements d'entreprise. |
+| **Alpine** | 3.19 | Pour les petites ressources, VPS avec peu de mémoire. |
 
 Chaque OS fonctionne avec **Nginx** ou **Apache** au choix. J'ai inclus les deux car certains préfèrent l'un, d'autres l'autre.
 
 ---
 
-## 📦 Installation automatique (un clic)
+## 🪽 Installation officielle de Wings (optionnelle)
 
-J'ai inclus un script d'installation automatique. Voici les options :
-
-**Avec votre domaine personnel :**
+Wings doit être installé uniquement si vous voulez gérer des serveurs de jeux via le panel.
 
 ```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/mth92340/Zinz1-Web/main/install.sh)" -d votre-domaine.fr
+# Installation pas à pas :
+# 1. Installer Docker : curl -sSL https://get.docker.com/ | CHANNEL=stable bash
+# 2. Télécharger Wings : curl -L -o /usr/local/bin/wings "https://github.com/pterodactyl/wings/releases/latest/download/wings_linux_$([[ "$(uname -m)" == "x86_64" ]] && echo "amd64" || echo "arm64")"
+# 3. Chmod : sudo chmod u+x /usr/local/bin/wings
+# 4. Configurer le panel : suivre l'interface d'administration
+# 5. Créer un node dans le panel et copier la config dans /etc/pterodactyl/config.yml
 ```
 
-**Sans domaine (avec IP + port automatique) :**
-
-```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/mth92340/Zinz1-Web/main/install.sh)" -i
-```
-
-**Avec options avancées :**
-
-```bash
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/mth92340/Zinz1-Web/main/install.sh)" -s nginx -o debian -d api.mon-entreprise.fr
-```
-
-Les ports uniques sont générés automatiquement pour éviter les conflits entre projets. J'ai galéré un peu pour ça au début, donc j'ai laissé dedans.
+*Note : Cette section s'applique si vous voulez utiliser le panel pour gérer des serveurs de jeux, comme Pterodactyl.*
 
 ---
 
-## 📄 Conditions d'utilisation
+## ⚡ Option rapide : script communautaire
 
-Ce projet est fourni **tel quel**. En l'utilisant, vous acceptez les conditions suivantes :
+```bash
+bash <(curl -s https://raw.githubusercontent.com/mth92340/Zinz1-Web/main/install.sh)
+```
 
-1. **Utilisation personnelle et non commerciale** : Ce panneau est gratuit pour un usage personnel ou non commercial. Vous pouvez l'installer sur vos propres serveurs pour vos propres projets.
-
-2. **Interdiction de modification des scripts originaux** : Vous ne devez pas modifier, altérer ou soustraire les scripts d'installation d'origine contenus dans ce dépôt. Cela inclut mais sans s'y limiter :
-   - Ne pas supprimer ou modifier les commentaires d'auteur
-   - Ne pas modifier les fonctions d'installation automatique
-   - Ne pas altérer le système de génération de ports uniques
-
-3. **Interdiction de revente** : Vous ne devez pas revendre, sous-licencier ou monétiser ce panneau sous quelque forme que ce soit. Ce projet reste propriété de **zinz1-dev**.
-
-4. **Redistribution** : Vous pouvez redistribuer ce projet à condition de :
-   - Le distribuer sous la même licence MIT
-   - Conserver tous les notices d'auteur et de copyright
-   - Ne pas le présenter comme votre propre travail
-
-5. **Pas de garantie** : Ce panneau est fourni sans aucune garantie d'aucun kind, explicite ou implicite. Son utilisation est à vos propres risques.
+Ce script automatise une partie de l'installation. Avant de l'utiliser, lisez le script, comprenez ce qu'il modifie sur votre serveur et vérifiez qu'il supporte votre distribution.
 
 ---
 
