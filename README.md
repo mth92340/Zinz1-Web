@@ -7,218 +7,111 @@
 <h1 align="center">ZinZ1-Web</h1>
 
 <p align="center">
-  <strong>Automated Server Control Panel</strong>
+  <strong>Panneau de contrôle serveur automatisé</strong>
+</p>
+
+<p align="center">
+  <a href="# Installation">Installation</a> ·
+  <a href="# Installation manuelle">Installation manuelle</a> ·
+  <a href="# Systèmes d'exploitation">Systèmes d'exploitation</a> ·
+  <a href="# Conditions d'utilisation">Conditions d'utilisation</a> ·
+  <a href="# Contact">Contact</a>
 </p>
 
 <br />
 
-## 🌐 Language / Langue
+## 📋 À propos
 
-<select id="language-select" onchange="changeLanguage(this.value)" style="padding: 8px 16px; border: 1px solid #ccc; border-radius: 6px;">
-  <option value="fr" selected>Français</option>
-  <option value="en">English</option>
-</select>
+Salut, je m'appelle mth92340. J'ai créé ce panneau de contrôle serveur pour gérer mes propres projets d'hébergement. C'est un projet personnel, fait pour fonctionner sur ma machine et que je souhaite partager.
 
-<script>
-function changeLanguage(lang) {
-  // Simple language switch - stores preference in localStorage
-  localStorage.setItem('userLanguage', lang);
-  location.reload();
-}
-
-// Check for saved language preference
-document.addEventListener('DOMContentLoaded', () => {
-  const savedLang = localStorage.getItem('userLanguage');
-  if (savedLang) {
-    document.getElementById('language-select').value = savedLang;
-  }
-});
-</script>
-
-<br />
-
-## 📊 About
-
-**ZinZ1-Web** is an automated server control panel with a **Pterodactyl-style** interface. It allows you to easily manage your hosting projects on your own machine.
-
-This project was created by **mth92340** for personal use, but it is shareable. It runs under **npm** (Node.js required) and offers a lightweight alternative to commercial panels.
+L'idée : avoir un panneau qui ressemble à ceux qu'on voit sur le marché (style Pterodactyl) mais en simple à configurer et à héberger sur n'importe quelle machine Linux.
 
 ---
 
-## 📚 Official Documentation
+## 📦 Qu'est-ce qu'il fait ?
 
-- [Website](https://zinz1-dev.fr)
-- [GitHub Repository](https://github.com/mth92340/Zinz1-web-test)
+Bon, c'est un panneau qui permet de :
+- Lancer automatiquement un serveur (Nginx ou Apache) sur votre machine
+- Choisir le système d'exploitation (Debian, Ubuntu, CentOS ou Alpine)
+- Obtenir un accès SSH avec un utilisateur et mot de passe créés automatiquement
+- Avoir phpMyAdmin installé tout de suite
+- Avoir un firewall (UFW) qui configure les ports nécessaires
+- Créer des projets isolés avec leurs propres ports d'accès
 
----
-
-## ✅ Before You Begin
-
-You will need:
-
-- 🐧 A Linux server with `root` or `sudo` access;
-- 🌐 A domain name pointing to your server, especially if you enable HTTPS;
-- 🧠 Solid Linux administration basics;
-- 📦 Docker-compatible hosting, ideally KVM or a dedicated server;
-- 💾 A backup of your important data before any installation.
-
-ZinZ1-Web does not work under Windows for Wings. OpenVZ, OVZ, Virtuozzo, or some LXC environments often have problems with Docker.
-
-To check virtualization:
-
-```bash
-systemd-detect-virt
-```
-
-If the result indicates `openvz` or `lxc`, ask your hoster for confirmation before continuing.
+Chaque projet obtient son propre port (ex: 8086, 8087, 8088...) pour ne pas se marcher dessus. C'est pratique quand on en a plusieurs qui tournent en même temps.
 
 ---
 
-## 🧩 Supported Systems
+## 📦 Installation
 
-According to current official documentation, the Panel and Wings work on the following distributions.
+Le projet tourne sous **npm** (il faut avoir Node.js installé sur votre machine).
 
-| System | Supported Versions | Notes |
-| --- | --- | --- |
-| **Ubuntu** | 22.04, 24.04 | Ubuntu 22.04 requires additional PHP repositories. |
-| **Debian** | 11, 12, 13 | Officially documented Debian dependencies. |
-| **RHEL / Rocky Linux / AlmaLinux** | 8, 9 | Additional repositories may be needed. |
+```bash
+# Cloner ou télécharger
+git clone https://github.com/mth92340/Zinz1-web-test.git
 
-Wings also mentions Ubuntu 20.04 as supported, but for a complete new installation it is better to start with a recent and maintained version.
+# Installer les dépendances
+npm install
+
+# Lancer
+npm run dev
+```
+
+Le panel sera accessible sur http://localhost:3000 (ou sur votre IP locale sur le réseau local).
 
 ---
 
-## 📦 Main Dependencies
+## 📦 Installation manuelle
 
-For the **Panel**:
+Si vous préférez installer vous-même les composants :
 
-- **PHP `8.2` or `8.3`** recommended;
-- PHP extensions: `cli`, `openssl`, `gd`, `mysql`, `PDO`, `mbstring`, `tokenizer`, `bcmath`, `xml`, `dom`, `curl`, `zip`, and `fpm` with NGINX;
-- **MySQL `5.7.22+` or MySQL `8`, or MariaDB `10.2+`**;
-- **Redis**;
-- **A web server**: NGINX, Apache or Caddy;
-- **`curl`, `tar`, `unzip`, `git`**;
-- **Composer v2**.
+```bash
+# Installer Nginx ou Apache selon votre choix
+# Configurer le firewall UFW (ports 22, 80, 443)
+# Installer phpMyAdmin
+# Créer un utilisateur SSH avec mot de passe
 
-For **Wings**:
-
-- **Docker**;
-- **`curl`**;
-- A Linux kernel compatible with Docker;
-- An SSL certificate if the Panel uses HTTPS.
+# Les détails dépendent de votre système d'exploitation (Debian, Ubuntu, CentOS, Alpine)
+# et de vos préférences de configuration.
+```
 
 ---
 
-## 🖥️ Official Panel Installation
+## 🐧 Systèmes d'exploitation
 
-The exact commands may vary depending on the distribution. Always consult the official page before running them.
+J'ai testé ces quatre OS sur ma machine. Voici mon avis franc :
 
-### 1. 📦 Install Dependencies
+- **Debian 12 (Bookworm)** : Mon préféré pour la stabilité. Fonctionne bien en production.
+- **Ubuntu 22.04 LTS** : Si vous connaissez déjà Ubuntu ailleurs. Facile à prendre en main.
+- **CentOS 9 Stream** : Pour les environnements d'entreprise. Un peu plus complexe à configurer.
+- **Alpine Linux 3.19** : Pour les petites ressources, les VPS avec peu de mémoire.
 
-Example for a Debian/Ubuntu base:
-
-```bash
-apt update
-apt -y install software-properties-common curl apt-transport-https ca-certificates gnupg tar unzip git redis-server nginx mariadb-server
-```
-
-Then install PHP `8.2` or `8.3` and the necessary extensions according to your system. The official documentation gives a complete example for Ubuntu with adapted PHP repositories.
-
-Install Composer:
-
-```bash
-curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-```
-
-### 2. ⬇️ Download the Panel
-
-```bash
-mkdir -p /var/www/pterodactyl
-cd /var/www/pterodactyl
-
-curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz
-tar -xzvf panel.tar.gz
-chmod -R 755 storage/* bootstrap/cache/
-```
-
-### 3. 🗄️ Prepare the Database
-
-Connect to MariaDB or MySQL:
-
-```bash
-mariadb -u root -p
-```
-
-Create the user and database, replacing `solid_password` with a unique password:
-
-```sql
-CREATE USER 'pterodactyl'@'127.0.0.1' IDENTIFIED BY 'solid_password';
-CREATE DATABASE panel;
-GRANT ALL PRIVILEGES ON panel.* TO 'pterodactyl'@'127.0.0.1' WITH GRANT OPTION;
-exit
-```
-
-...
-
-### 4. 🗝️ Generate the Panel Key
-
-```bash
-php artisan key:generate
-```
-
-Without this key, some encrypted data becomes irrecoverable, even with a database backup.
-
-...
-
-### 5. 🚀 Run Migrations
-
-```bash
-php artisan migrate --seed --force
-php artisan p:user:make
-```
-
-...
-
-## ⚡ Quick Option: Community Script
-
-```bash
-bash <(curl -s https://pterodactyl-installer.se)
-```
-
-This script is not the official Pterodactyl method. Before using it, read its repository, understand what it modifies on your server, and verify it supports your distribution: pterodactyl-installer.
-
-For a Panel + Wings installation via this script, the usually used option is the combined Panel and Wings installation. Answer carefully the questions about the database, domain, firewall, HTTPS and Let's Encrypt.
+Chaque OS fonctionne avec Nginx ou Apache au choix. J'ai inclus les deux car certains préfèrent l'un, d'autres l'autre.
 
 ---
 
 ## 📬 Contact
 
-If you have questions, bugs, or just want to say hello:
+Si vous avez des questions, des bugs, ou juste envie de dire bonjour :
 
 **Email :** contact@zinz1-dev.fr
 
-**GitHub :** [zinz1-dev](https://github.com/zinz1-dev)
-
-Or open an issue on GitHub. I answer when I can.
+Ou ouvrez une issue sur GitHub. J'y réponds quand je peux.
 
 ---
 
-## 👨‍💻 About the Author
+## 📄 Licence
 
-**mth92340** created this panel to manage his own hosting projects. It is a personal project shared in case it might be useful to others. No marketing hype, no "revolutionizing the world" - it's just a useful tool.
+Ce projet est sous licence **MIT**. Libre à vous de l'utiliser, de le modifier ou de le redistribuer. C'est la licence que j'ai choisie pour garder les choses simples.
 
-**Website :** zinz1-dev.fr
+***
 
----
+Réalisé par mth92340, 2026
 
-## 📄 License
-
-This project is under the **MIT** License. See the `LICENSE` file for more details.
-
-Made by **mth92340**, 2026
+Pas de blabla marketing, pas de "révolutionner le monde". C'est juste un outil que j'ai fait pour moi et que je partage au cas où ça puisse servir à d'autres.
 
 ---
 
-<p align="center">
-  <strong>Stars ⭐ on GitHub are welcome!</strong>
-</p>
+**Site web :** zinz1-dev.fr
+
+**Pseudo GitHub :** zinz1-dev
